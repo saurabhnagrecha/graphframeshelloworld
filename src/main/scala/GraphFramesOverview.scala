@@ -3,6 +3,7 @@ import quickstart.QuickStartExamples._
 import userguide.GraphCreation._
 import userguide.BasicGraphQueries._
 import userguide.MotifFinding._
+import userguide.Subgraph._
 import org.graphframes.GraphFrame
 
 // TODO: import GraphFrames through build.sbt
@@ -27,5 +28,11 @@ object GraphFramesOverview {
     runBasicGraphQueries(g)
     val motifs = findExampleMotif(g, "(a)-[e]->(b); (b)-[e2]->(a)")
     val complexMotif = complexMotifExample(g)
+
+    val subgraph = simpleSubgraph(g, "age > 30", "relationship = 'friend'")
+    subgraph.edges.show()
+
+    val subgraphFromTriples = complexExampleSubgraph(g)
+    subgraphFromTriples.edges.show()
   }
 }
